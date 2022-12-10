@@ -30,12 +30,12 @@ const img2 = (
   </svg>
 );
 
-const BookMark = ({ status, bookMark }) => {
-  console.log("status", status);
-  if (status === false) {
-    return img2;
+const BookMark = (props) => {
+  // console.log("status", props);
+  if (props.bookmark === false) {
+    return img1;
   }
-  return img1;
+  return img2;
 };
 
 export default BookMark;

@@ -10,10 +10,9 @@ import api from "./api"
 
 const App = () => {
     const [users, setUsers] = useState(api.users.fetchAll());
-    const { name, qualities, bookmark } = users
-    console.log('name')
+
     // console.log(users.name, '123')
-    // console.log("props", users);
+    console.log("props", users);
     // console.log('api', api.users.fetchAll());
 
     const handleDelete = (userId) => {
@@ -23,15 +22,22 @@ const App = () => {
     const isDown = false
 
     const handleLike = (userId) => {
-        setUsers(users.filter((user) => {
-            if (user._id === userId) {
-                console.log("props", userId);
-                console.log("  user.bookmark", user.bookmark);
-                user.bookmark = true
-                console.log("  user.bookmark", user.bookmark);
+        // console.log("userId", userId);
 
-            }
-        }));
+
+        setUsers(users.filter((user) => user._id === userId ? user.bookmark = !user.bookmark : user)
+            // {
+            //     if (user._id === userId) {
+            //         user.bookmark = !user.bookmark
+            //     }
+
+            //     return {
+            //         // ...user,
+
+            //     }
+            // }
+
+        );
     };
 
 
@@ -90,12 +96,12 @@ const App = () => {
                                 <th>
                                     <button
                                         type="button"
-                                        className="btn btn-danger btn-sm"
+                                        className="btn btn btn-sm"
                                         onClick={() => handleLike(item._id)}
                                     >
                                         <BookMark
-                                            status={item.bookmark}
-                                            bookmark={item.bookmark} />
+                                            bookmark={item.bookmark}
+                                        />
 
                                     </button>
 
