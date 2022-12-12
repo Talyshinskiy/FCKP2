@@ -1,5 +1,6 @@
 import React from "react";
 import BookMark from "./bookMark";
+import QualitiesList from "./qualitiesList";
 // import { useState } from "react";
 // import User from './componets/User'
 import Users from "./users";
@@ -16,12 +17,8 @@ const User = ({ user, onDelete, onLike }) => {
       <th>{user.name}</th>
       <th>
         {user.qualities.map((item) => (
-          <span
-            className={"badge border-radius m1 bg-" + item.color}
-            key={item.id + item.name}
-          >
-            {item.name}
-          </span>
+          <QualitiesList id={item.id} name={item.name} color={item.color} />
+          //
         ))}
       </th>
       <th>{user.profession.name}</th>

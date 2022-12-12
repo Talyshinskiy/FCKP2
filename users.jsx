@@ -51,7 +51,12 @@ const Users = ({ usersList, onDelete, onLike }) => {
         </thead>
         <tbody>
           {usersList.map((item) => (
-            <User user={item} onDelete={onDelete} onLike={onLike} />
+            <User
+              key={item._id}
+              user={item}
+              onDelete={onDelete}
+              onLike={onLike}
+            />
           ))}
         </tbody>
       </table>
