@@ -30,9 +30,9 @@ const img2 = (
   </svg>
 );
 
-const BookMark = (props) => {
-  // console.log("status", props);
-  if (props.bookmark === false) {
+const BookMark = ({ bookmark }) => {
+  console.log("status", bookmark);
+  if (bookmark === false) {
     return img1;
   }
   return img2;

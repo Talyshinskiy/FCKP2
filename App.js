@@ -9,129 +9,64 @@ import api from "./api"
 
 
 const App = () => {
-    const [users, setUsers] = useState(api.users.fetchAll());
+    // const [users, setUsers] = useState();
+    // console.log('123', users)
 
-    // console.log(users.name, '123')
-    console.log("props", users);
+    // const handleDelete = (userId) => {
+    //     setUsers(users.filter((user) => user._id !== userId));
+    // };
+
+    // setUser
+    // console.log()
+    // console.log("props", users);
     // console.log('api', api.users.fetchAll());
 
-    const handleDelete = (userId) => {
-        setUsers(users.filter((user) => user._id !== userId));
-    };
+    // const handleDelete = (userId) => {
+    //     setUsers(users.filter((user) => user._id !== userId));
+    // };
     // let btnStyles = 'btn btn-danger sm-2"'
-    const isDown = false
+    // const isDown = false
 
-    const handleLike = (userId) => {
-        // console.log("userId", userId);
-
-
-        setUsers(users.filter((user) => user._id === userId ? user.bookmark = !user.bookmark : user)
-            // {
-            //     if (user._id === userId) {
-            //         user.bookmark = !user.bookmark
-            //     }
-
-            //     return {
-            //         // ...user,
-
-            //     }
-            // }
-
-        );
-    };
+    // const handleLike = (userId) => {
+    //     // console.log("userId", userId);
 
 
+    //     setUsers(users.map((user) => user._id === userId ? user.bookmark = !user.bookmark : console.log(user.bookmark))
+    //         // {
+    //         //     if (user._id === userId) {
+    //         //         user.bookmark = !user.bookmark
+    //         //     }
+
+    //         //     return {
+    //         //         // ...user,
+
+    //         //     }
+    //         // }
+
+    //     );
+    // };
 
 
 
-    if (users.length === 0) {
-        return (
-            <h1 className="badge badge-pill badge-warning bg-danger">
-                <h2 className="">Никто с тобой не тусанет</h2>{" "}
-            </h1>)
-    } else {
-        return (
-            <>
-                <SearchStatus length={users.length} />
-                <hr />
-                {/* <Users />
-                <Users
-                // name={users.name}
-                // qualities={users.qualities}
-                // bookmark={users.bookmark}
 
 
-                /> */}
-                <hr />
-                <table className="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Имя</th>
-                            <th>Качества</th>
-                            <th>Профессия</th>
-                            <th>Завершенные встречи</th>
-                            <th>Оценка</th>
-                            <th>Избранное</th>
+    // if (users.length === 0) {
+    //     return (
+    //         <h1 className="badge badge-pill badge-warning bg-danger">
+    //             <h2 className="">Никто с тобой не тусанет</h2>{" "}
+    //         </h1>)
+    // } else {
+    return (
+        <div>
+            {/* <SearchStatus users={users.lenght} /> */}
+            <Users />
 
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {users.map((item) => (
-                            <tr key={item.id + item.name}>
-                                <th>{item.name}</th>
-                                <th>
-                                    {item.qualities.map((item) => (
-                                        <span
-                                            className={"badge border-radius m1 bg-" + item.color}
-                                            key={item.id + item.name}
-                                        >
-                                            {item.name}
-                                        </span>
-                                    ))}
-                                </th>
-                                <th>{item.profession.name}</th>
-                                <th>{item.completedMeetings}</th>
-                                <th>{item.rate} / 5</th>
-                                <th>
-                                    <button
-                                        type="button"
-                                        className="btn btn btn-sm"
-                                        onClick={() => handleLike(item._id)}
-                                    >
-                                        <BookMark
-                                            bookmark={item.bookmark}
-                                        />
-
-                                    </button>
+        </div>
+    );
+}
 
 
-
-                                    {/* 
-                                    <BookMark
-                                        bookMark={users.bookMark}
-                                        id={item._id}
-                                    /> */}
-                                </th>
-                                <th>
-                                    <button
-                                        type="button"
-                                        className="btn btn-danger btn-sm"
-                                        onClick={() => handleDelete(item._id)}
-                                    >
-                                        Delete
-                                    </button>
-                                </th>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </>
-        );
-    }
-
-
-};
+// };
 
 
 
