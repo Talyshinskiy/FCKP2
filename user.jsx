@@ -15,11 +15,18 @@ const User = ({ user, onDelete, onLike }) => {
   return (
     <tr key={user.id + user.name}>
       <th>{user.name}</th>
+
       <th>
-        {user.qualities.map((item) => (
-          <QualitiesList id={item.id} name={item.name} color={item.color} />
-          //
-        ))}
+        {/* {user.qualities.map((item) => (
+          
+        ))} */}
+        <QualitiesList
+          key={user.id}
+          id={user.id}
+          name={user.name}
+          color={user.color}
+          qualities={user.qualities}
+        />
       </th>
       <th>{user.profession.name}</th>
       <th>{user.completedMeetings}</th>

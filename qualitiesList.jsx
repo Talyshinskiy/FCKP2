@@ -1,10 +1,19 @@
 import React from "react";
 
-const QualitiesList = ({ id, name, color }) => {
+const QualitiesList = ({ id, name, color, qualities }) => {
+  console.log("qualities", qualities);
   return (
-    <span className={"badge border-radius m1 bg-" + color} key={id + name}>
-      {name}
-    </span>
+    <th key={id}>
+      {qualities.map((item) => (
+        <span
+          className={"badge border-radius m1 bg-" + item.color}
+          key={id + name}
+        >
+          {name}
+        </span>
+        //
+      ))}
+    </th>
   );
 };
 export default QualitiesList;
