@@ -9,6 +9,7 @@ import api from "../api";
 
 const Users = ({ usersList, onDelete, onLike }) => {
   console.log("props", usersList);
+
   // const [users, setUsers] = useState(api.users.fetchAll());
   // console.log(users.length);
 
@@ -49,7 +50,9 @@ const Users = ({ usersList, onDelete, onLike }) => {
           </tr>
         </thead>
         <tbody>
-          <User users={usersList} onDelete={onDelete} onLike={onLike} />
+          {usersList.map((item) => (
+            <User user={item} onDelete={onDelete} onLike={onLike} />
+          ))}
         </tbody>
       </table>
     </div>
