@@ -1,19 +1,24 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-const QualitiesList = ({ id, name, color, qualities }) => {
-  console.log("qualities", qualities);
+const QualitiesList = ({ qualities }) => {
   return (
-    <th key={id}>
+    <>
       {qualities.map((item) => (
         <span
           className={"badge border-radius m1 bg-" + item.color}
-          key={id + name}
+          key={item.id + item.name}
         >
-          {name}
+          {item.name}
         </span>
         //
       ))}
-    </th>
+    </>
   );
 };
+
+QualitiesList.propTypes = {
+  qualities: PropTypes.array.isRequired
+};
+
 export default QualitiesList;

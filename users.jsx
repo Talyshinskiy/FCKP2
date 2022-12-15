@@ -1,31 +1,22 @@
 import React, { useState } from "react";
 import SearchStatus from "./searchStatus";
+import { paginate } from "../utils/paginate";
 import User from "./user";
-import BookMark from "./bookMark";
-import api from "../api";
+import Pagination from "./pagination";
+import PropTypes from "prop-types";
 
-// import favourite from "../../assets/img/favourite.png";
-// import notFavourite from "../assets/img/notFavourite.png";
+const Users = ({ users, onDelete, onLike }) => {
+  const count = users.length;
+  const pageSize = 4;
+  const [currentPage, setCurrentPage] = useState(1);
 
-const Users = ({ usersList, onDelete, onLike }) => {
-  console.log("props", usersList);
+  const handlePageChange = (pageIndex) => {
+    setCurrentPage(pageIndex);
+  };
 
-  // const [users, setUsers] = useState(api.users.fetchAll());
-  // console.log(users.length);
+  const userCrop = paginate(users, currentPage, pageSize);
 
-  // (user) => {
-  //   return user.map((user) => {
-  //     if (user.imdbID === imdbID) {
-  //       return {
-  //         ...user,
-  //         bookmark: !user.bookmark,
-  //       };
-  //     }
-  //     return user;
-  //   });
-  // }
-
-  if (usersList.length === 0) {
+  if (count === 0) {
     return (
       <div className="badge border-radius bg-danger">
         Никто с тобой не тусанет
@@ -33,37 +24,47 @@ const Users = ({ usersList, onDelete, onLike }) => {
     );
   }
   return (
-    <div>
-      <SearchStatus length={usersList.length} />
-      {/* {user.length>0&& } */}
-      <table className="table table-striped">
-        <thead>
-          <tr>
-            <th>Имя</th>
-            <th>Качества</th>
-            <th>Профессия</th>
-            <th>Завершенные встречи</th>
-            <th>Оценка</th>
-            <th>Избранное</th>
-
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {usersList.map((item) => (
-            <User
-              key={item._id}
-              user={item}
-              onDelete={onDelete}
-              onLike={onLike}
-            />
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <>
+      <div>
+        <SearchStatus length={users.length} />
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>Имя</th>
+              <th>Качества</th>
+              <th>Профессия</th>
+              <th>Завершенные встречи</th>
+              <th>Оценка</th>
+              <th>Избранное</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {userCrop.map((item) => (
+              <User
+                key={item._id}
+                user={item}
+                onDelete={onDelete}
+                onLike={onLike}
+              />
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <Pagination
+        itemsCount={count}
+        pageSize={pageSize}
+        currentPage={currentPage}
+        onPageChange={handlePageChange}
+      />
+    </>
   );
+};
 
-  // const getUser = users.map((user) => console.log(user));
+Users.propTypes = {
+  users: PropTypes.array.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  onLike: PropTypes.func.isRequired
 };
 
 export default Users;

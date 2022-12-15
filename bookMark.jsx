@@ -1,7 +1,5 @@
-import React, { useState, useCallback } from "react";
-import App from "../App";
-import favourite from "../assets/img/favourite.png";
-import notFavourite from "../assets/img/notFavourite.png";
+import React from "react";
+import PropTypes from "prop-types";
 
 const img1 = (
   <svg
@@ -31,11 +29,14 @@ const img2 = (
 );
 
 const BookMark = ({ bookmark }) => {
-  console.log("status", bookmark);
+  // console.log("status", bookmark);
   if (bookmark === false) {
     return img1;
   }
   return img2;
 };
 
+BookMark.propTypes = {
+  bookmark: PropTypes.bool.isRequired
+};
 export default BookMark;
